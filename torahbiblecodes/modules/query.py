@@ -48,6 +48,18 @@ def TextOfEN(query):
 						print(GREEN +'EN: ==> GE:'+str(dbitem[1])+' ==> '+ str(dbitem[4]) + END)
 						print(BLUE +'HE: ==> GE:'+str(dbitem[1])+' ==> '+ str(dbitem[2]) + END)
 
+def TextOfIW(query):
+
+		ret = db.getTextOfIW(query)
+		if len(ret) !=0:
+				for dbitem in ret:
+						#print(dbitem[3]+'\n')
+						print(YELLOW +'BOOK: ==> '+str(dbitem[5]) + END)
+						print(ORANGE +'ES: ==> GE:'+str(dbitem[1])+' ==> '+str(dbitem[3]) + END)
+						print(GREEN +'EN: ==> GE:'+str(dbitem[1])+' ==> '+ str(dbitem[4]) + END)
+						print(BLUE +'HE: ==> GE:'+str(dbitem[1])+' ==> '+ str(dbitem[2]) + END)
+
+
 
 def TextOfESMAKE():
 		global lang
@@ -79,6 +91,8 @@ def search(op):
 		TextOfES(e)
 	elif lang == 'en':
 		TextOfEN(e)
+	elif lang == 'iw':
+		TextOfIW(e)
 
 
 def coreOptions():

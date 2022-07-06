@@ -42,6 +42,17 @@ def getTextOfEN(query):
 		else:
 				return data
 
+def getTextOfIW(query):
+		conn = sqlite3.connect(dbpath, timeout=10, check_same_thread=False)
+		c = conn.cursor()
+		c.execute("SELECT * FROM tbc WHERE result like '%" + str(query) + "%'")
+		data = c.fetchall()
+		#print(c.fetchall())
+		if data is None:
+				return "Problem!"
+		else:
+				return data
+
 
 def getTextOfES(query):
 		conn = sqlite3.connect(dbpath, timeout=10, check_same_thread=False)
