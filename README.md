@@ -12,7 +12,7 @@ Torah Codes , An understandable Equidistant Letter Sequence, multilanguaje and m
 
 ```
 
-pip3 install torahbiblecodes
+pip3 install torahcodes
 
 tbc-cli
 
