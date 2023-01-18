@@ -237,7 +237,6 @@ Citrix
 
 Hecathomb
 
-TorahBibleCodes - https://github.com/TorahBibleCodes/TorahBibleCodes
 
 ## License 
 
