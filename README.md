@@ -1,4 +1,4 @@
-# Torah Codes Python- David Ben Zelateh v1.0.5 Equidistant Letter Sequence Python Library
+# Torah Codes Python- David Ben Zelateh v1.0.6 Equidistant Letter Sequence Python Library
 
 Torah Codes , An understandable Equidistant Letter Sequence, multilanguaje and multithreading bible codes python library . Study the Torah as never before
 
@@ -12,7 +12,7 @@ Torah Codes , An understandable Equidistant Letter Sequence, multilanguaje and m
 
 ```
 
-pip3 install torahbiblecodes
+pip3 install torahcodes
 
 tbc-cli
 
@@ -203,7 +203,7 @@ Converting words to gematria and extending to infinite as a sequence
 - Import module class
 ```
 
-from torahbiblecodes.resources.func.torah import *
+from torahcodes.resources.func.torah import *
 
 
 torah = Torah()
@@ -236,8 +236,6 @@ text_translate = torah.func_translate('iw', 'en', response_els)
 Citrix
 
 Hecathomb
-
-TorahBibleCodes - https://github.com/TorahBibleCodes/TorahBibleCodes
 
 ## License 
 
