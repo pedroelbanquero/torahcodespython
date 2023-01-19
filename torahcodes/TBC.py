@@ -16,8 +16,16 @@ try:
 	import signal
 	import sys
 	import readline
+<<<<<<< HEAD:torahcodes/TBC.py
 	readline.parse_and_bind('"\e[A": history-search-backward')
 	from torahcodes.modules import *
+=======
+	readline.parse_and_bind('"\e[A": history-search-backward')  
+
+	#import lib.nc as nc
+	# MODULE IMPORT
+	from torahbiblecodes.modules import *
+>>>>>>> refs/remotes/origin/master:torahbiblecodes/TBC.py
 	#from active_modules import *
 except KeyboardInterrupt:
 	print(GREEN + "\n[I] Shutting down..." + END)

@@ -4,6 +4,8 @@ Torah Codes , An understandable Equidistant Letter Sequence, multilanguaje and m
 
 ![image](https://user-images.githubusercontent.com/60758685/143378238-d73ee93b-7ba6-4093-83ac-a859fa11461a.png)
 
+![image](https://user-images.githubusercontent.com/60758685/213285427-4561bb21-4635-442b-9b44-affae791c47b.png)
+
 
 ![image](https://user-images.githubusercontent.com/60758685/172951901-fc5d60fe-8bb5-4522-b172-4013d16d279b.png)
 
@@ -237,6 +239,10 @@ Citrix
 
 Hecathomb
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 ## License 
 
 Elohim Open Source
