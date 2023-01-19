@@ -15,6 +15,8 @@ try:
 	import time
 	import signal
 	import sys
+	import readline
+	readline.parse_and_bind('"\e[A": history-search-backward')  
 
 	#import lib.nc as nc
 	# MODULE IMPORT
