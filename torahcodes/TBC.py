@@ -15,9 +15,8 @@ try:
 	import time
 	import signal
 	import sys
-
-	#import lib.nc as nc
-	# MODULE IMPORT
+	import readline
+	readline.parse_and_bind('"\e[A": history-search-backward')
 	from torahcodes.modules import *
 	#from active_modules import *
 except KeyboardInterrupt:

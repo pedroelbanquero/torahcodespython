@@ -1,0 +1,4 @@
+torahcodes
+torahcodes/modules
+torahcodes/resources/data
+torahcodes/resources/func
