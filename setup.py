@@ -11,16 +11,16 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name='torahbiblecodes',
-    version='1.0.3',
-    author='torahbiblecodes',
+    name='torahcodes',
+    version='1.0.7',
+    author='torahcodes',
     author_email='',
     description='An understandable multilanguaje and multithreading bible codes . Study the Torah as never before Bible Codes python library . An understandable multilanguaje and multithreading bible codes . Study the Torah as never before',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='',
     #packages=find_packages(exclude=['tests']),
-    packages=['torahbiblecodes', 'torahbiblecodes/modules', 'torahbiblecodes/resources/func', 'torahbiblecodes/resources/data'],
+    packages=['torahcodes', 'torahcodes/modules', 'torahcodes/resources/func', 'torahcodes/resources/data'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -29,7 +29,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.9'
     ],
-    keywords='torahbiblecodes',
+    keywords='torahcodes',
     python_requires='>=3.6.0',
     install_requires=[
         'configparser',
@@ -40,10 +40,10 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'tbc-cli=torahbiblecodes.TBC:main'
+            'tbc-cli=torahcodes.TBC:main'
         ],
     },
     project_urls={
-        'Source': 'https://github.com/pedroelbanquero/TorahBibleCodes',
+        'Source': 'https://github.com/pedroelbanquero/torahcodespython',
     },
 )
