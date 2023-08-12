@@ -20,7 +20,16 @@ setup(
     long_description_content_type='text/markdown',
     url='',
     #packages=find_packages(exclude=['tests']),
-    packages=['torahcodes', 'torahcodes/modules', 'torahcodes/resources/func', 'torahcodes/resources/data'],
+    packages=[
+        'torahcodes',
+        'torahcodes.modules',
+        'torahcodes.resources.func',
+        'torahcodes.resources.data',
+    ],
+    package_data={
+        'torahcodes.resources.data': ['*'],
+    },
+    include_package_data=True,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
@@ -36,7 +45,12 @@ setup(
         'lxml',
         'python-hebrew-numbers',
         'textblob',
-        'deep_translator'
+        'deep_translator',
+        'requests',
+        'pandas',
+        'xgboost',
+        'elasticsearch',
+        'python-telegram-bot',
     ],
     entry_points={
         'console_scripts': [

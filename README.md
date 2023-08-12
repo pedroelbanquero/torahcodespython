@@ -10,15 +10,33 @@ Torah Codes , An understandable Equidistant Letter Sequence, multilanguaje and m
 ![image](https://user-images.githubusercontent.com/60758685/172951901-fc5d60fe-8bb5-4522-b172-4013d16d279b.png)
 
 
-## Install 
+## Install (System / Debian-based)
 
 ```
 
-pip3 install torahcodes
+sudo apt install python3 python3-pip
+
+pip3 install git+https://github.com/pedroelbanquero/torahcodespython
 
 tbc-cli
 
 ```
+
+
+## Install (Venv / Debian-based)
+
+```
+
+sudo apt install python3 python3-pip python3-venv
+
+python3 -m venv ./venv
+
+./venv/bin/pip install git+https://github.com/pedroelbanquero/torahcodespython
+
+./venv/bin/tbc-cli
+
+```
+
 
 ## Usage
 
