@@ -42,6 +42,11 @@ books = BibleBooks()
 class Torah():
 	def __init__(self):
 		self.book = ''
+		self.gcode = {
+            'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 600,
+            'k': 10, 'l': 20, 'm': 30, 'n': 40, 'o': 50, 'p': 60, 'q': 70, 'r': 80, 's': 90,
+            't': 100, 'u': 200, 'v': 700, 'w': 900, 'x': 300, 'y': 400, 'z': 500
+		}
 
 	def loadbooks(self):
 		books.load()
@@ -71,24 +76,48 @@ class Torah():
 		return translated
 
 	def gematria(self, word: str) -> int:
-	    gcode = {   'a':1, 'b':2, 'c':3, 'd':4, 'e':5, 'f':6, 'g':7, 'h':8, 'i':9, 'j':600,
-	                'k':10, 'l':20, 'm':30, 'n':40, 'o':50, 'p':60, 'q':70, 'r':80, 's':90,
-	                't':100,'u':200,'v':700,'w':900,'x':300,'y':400, 'z':500  }
-	    try:
-	        return sum([gcode[char] for char in word])
-	    except:
-	        print(word)
-	        raise ValueError
+		try:
+			if word.isdigit():
+				return int(word)
+
+			# Aufteilen des Wortes in Buchstaben und Zahlen
+			letters = [char for char in word if char.isalpha()]
+			numbers = [int(char) for char in word if char.isdigit()]
+
+			# Berechnen des Gematria-Werts für die Buchstaben
+			letters_value = sum([self.gcode[char] for char in letters if char in self.gcode])
+
+
+			# Hinzufügen der Summe der Zahlen zum Gematria-Wert der Buchstaben
+			total_value = letters_value + sum(numbers)
+
+			return total_value
+		except:
+			print(word)
+			raise ValueError
 
 
 	def gematrix(self, phrase: str) -> int:
-	    phrase = self.strip_accents(phrase.lower())
-	    phrase = ''.join([i for i in phrase if i.isalpha()])
-	    try: 
-	        return sum([self.gematria(word.lower()) for word in phrase.split(' ')])
-	    except:
-	        print(phrase)
-	        raise ValueError
+		phrase = self.strip_accents(phrase.lower())
+		phrase = ''.join([i for i in phrase if i.isalpha() or i.isdigit() or i.isspace()])
+
+		# Aufteilen der Eingabe in separate Wörter und Zahlen
+		elements = phrase.split()
+		total_value = 0
+
+		for element in elements:
+			if element.isalpha():
+				# Berechne den Wert für Buchstaben
+				total_value += sum([self.gcode[char] for char in element if char in self.gcode])
+			elif element.isdigit():
+				# Addiere Zahlen direkt zum Gesamtwert
+				total_value += int(element)
+
+		return total_value
+
+
+
+
 
 
 	def strip_accents(self, s):
