@@ -54,7 +54,7 @@ def test(options):
 
 def process_hebrew_text(text):
     # Ersetzen Sie "י" durch einfache Leerzeichen
-    text = text.replace("י", "")
+    #text = text.replace("י", "")
 
     # Ersetzen Sie doppelte Leerzeichen durch einfache Leerzeichen
     text = re.sub(" +", "", text)
@@ -163,30 +163,35 @@ def tonum(options):
 
 
 def search(options):
-	global threads, totalresult
-	listform = ''
-	totalresult = 0
-	jobs = Queue()
-	if len(options) > 1:
-		for string in options:
-			listform = listform+' '+string
-		sed = torah.gematrix(listform)
-	else:
-		sed = torah.gematria(options[0].strip())
+    global threads, totalresult
+    totalresult = 0
+    jobs = Queue()
 
-	for i in books.booklist():
-		jobs.put(i)
+    # Verarbeite die Eingaben
+    listform = ' '.join(options)
+    if len(options) > 1:
+        sed = torah.gematrix(listform)
+    else:
+        sed = torah.gematria(options[0].strip())
 
-	for i in range(int(threads)):
-		worker = threading.Thread(target=searchAll, args=(jobs, str(sed),))
-		worker.start()
+    # Debug-Ausgabe
+    print(f"Verarbeitete Eingabe: {listform}")
+    print(f"Gematria-Wert: {sed}")
 
-	poolsize = 39 - int(jobs.qsize())
-	pooltotal = 39
-	jobs.join()
+    for i in books.booklist():
+        jobs.put(i)
 
-	print('\nFound', totalresult, 'Results')
-	print("all done")
+    for i in range(int(threads)):
+        worker = threading.Thread(target=searchAll, args=(jobs, str(sed),))
+        worker.start()
+
+    poolsize = 39 - int(jobs.qsize())
+    pooltotal = 39
+    jobs.join()
+
+    print('\nFound', totalresult, 'Results')
+    print("all done")
+
 
 
 def searchnumber(options):
