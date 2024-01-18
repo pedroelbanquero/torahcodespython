@@ -175,8 +175,8 @@ def search(options):
         sed = torah.gematria(options[0].strip())
 
     # Debug-Ausgabe
-    print(f"Verarbeitete Eingabe: {listform}")
-    print(f"Gematria-Wert: {sed}")
+    #print(f"Verarbeitete Eingabe: {listform}")
+    #print(f"Gematria-Wert: {sed}")
 
     for i in books.booklist():
         jobs.put(i)
