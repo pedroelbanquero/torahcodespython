@@ -52,6 +52,18 @@ def test(options):
 	for x in range(int(options[0]), int(options[1])):
 		searchnumber([x, ''])
 
+def process_hebrew_text(text):
+    # Ersetzen Sie "י" durch einfache Leerzeichen
+    #text = text.replace("י", "")
+
+    # Ersetzen Sie doppelte Leerzeichen durch einfache Leerzeichen
+    text = re.sub(" +", "", text)
+
+    # Löschen Sie einfache Leerzeichen
+    text = text.replace(" ", "")
+
+    return text
+
 def ttranslator():
 	global ptrans, totalvalue, tracert, totalresult, jobstrans
 
@@ -59,7 +71,8 @@ def ttranslator():
 		#print('\nFound', int(jobstrans.queue.qsize()))
 		tchunk = jobstrans.get()
 		tchunk = tchunk.split('*')
-		dchunk = tchunk[0]
+		dchunk = process_hebrew_text(tchunk[0])
+		#dchunk = tchunk[0]
 		n = 2000
 		text_chunk = [dchunk[i:i+n] for i in range(0, len(dchunk), n)]
 		lenchunk = len(text_chunk)
@@ -150,30 +163,35 @@ def tonum(options):
 
 
 def search(options):
-	global threads, totalresult
-	listform = ''
-	totalresult = 0
-	jobs = Queue()
-	if len(options) > 1:
-		for string in options:
-			listform = listform+' '+string
-		sed = torah.gematrix(listform)
-	else:
-		sed = torah.gematria(options[0].strip())
+    global threads, totalresult
+    totalresult = 0
+    jobs = Queue()
 
-	for i in books.booklist():
-		jobs.put(i)
+    # Verarbeite die Eingaben
+    listform = ' '.join(options)
+    if len(options) > 1:
+        sed = torah.gematrix(listform)
+    else:
+        sed = torah.gematria(options[0].strip())
 
-	for i in range(int(threads)):
-		worker = threading.Thread(target=searchAll, args=(jobs, str(sed),))
-		worker.start()
+    # Debug-Ausgabe
+    #print(f"Verarbeitete Eingabe: {listform}")
+    #print(f"Gematria-Wert: {sed}")
 
-	poolsize = 39 - int(jobs.qsize())
-	pooltotal = 39
-	jobs.join()
+    for i in books.booklist():
+        jobs.put(i)
 
-	print('\nFound', totalresult, 'Results')
-	print("all done")
+    for i in range(int(threads)):
+        worker = threading.Thread(target=searchAll, args=(jobs, str(sed),))
+        worker.start()
+
+    poolsize = 39 - int(jobs.qsize())
+    pooltotal = 39
+    jobs.join()
+
+    print('\nFound', totalresult, 'Results')
+    print("all done")
+
 
 
 def searchnumber(options):
