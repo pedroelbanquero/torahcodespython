@@ -12,7 +12,8 @@ from deep_translator import GoogleTranslator
 import re
 import torahcodes.resources.func.db as db
 from torahcodes.resources.func.thread import *
-
+import traceback
+from tqdm import tqdm
 
 BLUE, RED, WHITE, YELLOW, MAGENTA, GREEN, END = '\33[1;94m', '\033[1;91m', '\33[1;97m', '\33[1;93m', '\033[1;35m', '\033[1;32m', '\033[0m'
 ORANGE  = '\033[1;33m' # orange
@@ -144,31 +145,23 @@ def print_translations():
     translations.clear()
 
 
-def searchAll(q, number):
+def searchAll(q, number, options, pbar):
     global ptrans, totalvalue, tracert, totalresult, jobstrans
     while not q.empty():
         try:
             value = q.get()
             text_chunk = ''
-            ret, tvalue = torah.els(value, number, tracert=tracert)
-            totalvalue = totalvalue + tvalue
-
-            text_trans= ''
-            len_chunk = len(text_chunk)
-            #print(GREEN, 'chunk size: ', len_chunk, END)
-            nch = 0
+            ret = torah.els(value, number, tracert=tracert)
 
             jobstrans.add(str(ret)+'*'+value+'*'+number)
             jobstrans.join()
             q.task_done()
 
+            pbar.update(1)  # Aktualisiere den Fortschrittsbalken
         except Exception as e:
+            traceback.print_exc()
             q.task_done()
-            #print(ORANGE + retp + END)
-            print(RED,"Exception: {}".format(type(e).__name__),END)
-            print(ORANGE,"Exception message: {}".format(e),END)
-            #print(e)
-            pass
+            pbar.update(1)
 
 def tonum(options):
     global langin, langout, threads, totalresult
@@ -201,14 +194,26 @@ def search(options):
     else:
         sed = torah.gematria(options[0].strip())
 
-    for i in books.booklist():
+    booklist = books.booklist()
+    for i in booklist:
         jobs.put(i)
 
-    for i in range(int(threads)):
-        worker = threading.Thread(target=searchAll, args=(jobs, str(sed),))
-        worker.start()
+    # Initialisiere den Fortschrittsbalken hier, basierend auf der Anzahl der Bücher
+    pbar = tqdm(total=len(booklist), desc="Processing", unit="job")
 
-    jobs.join()
+    thread_list = []
+    for i in range(int(threads)):
+        # Übergib den Fortschrittsbalken als Argument an die searchAll Funktion
+        worker = threading.Thread(target=searchAll, args=(jobs, str(sed), options, pbar))
+        worker.start()
+        thread_list.append(worker)
+
+    for worker in thread_list:
+        worker.join()
+
+    # Schließe den Fortschrittsbalken, nachdem alle Jobs abgeschlossen sind
+    pbar.close()
+
     print_translations()
 
 
@@ -216,7 +221,6 @@ def search(options):
 def searchnumber(options):
     global threads, totalresult, jobstrans
     number = str(options[0])
-    #threads = 1
     totalresult = 0
 
     jobs = Queue()
@@ -225,12 +229,19 @@ def searchnumber(options):
     for i in bfor:
         jobs.put(i)
 
-    for i in range(int(threads)):
-        worker = threading.Thread(target=searchAll, args=(jobs, number,))
-        worker.start()
+    pbar = tqdm(total=len(bfor), desc="Processing", unit="job")  # Initialisiere hier den Fortschrittsbalken
 
-    jobs.join()
-    print_translations()
+    thread_list = []
+    for i in range(int(threads)):
+        worker = threading.Thread(target=searchAll, args=(jobs, number, options, pbar))
+        worker.start()
+        thread_list.append(worker)
+
+    for thread in thread_list:
+        thread.join()
+
+    pbar.close()  # Schließe den Fortschrittsbalken, nachdem alle Threads beendet sind
+
 
 def xgboost(options):
     print('Coming soon')

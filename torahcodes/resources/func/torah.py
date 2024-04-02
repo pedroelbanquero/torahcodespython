@@ -179,8 +179,7 @@ class Torah():
 			except:
 				pass
 		#print('Total', totalvalue)
-		ret = re.sub('\s+', ' ', rese.strip())
-		return ret, totalvalue
+		return rese
 
 	def GetDataBook(self, bibleNumberBook):
 
