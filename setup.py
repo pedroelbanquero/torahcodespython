@@ -12,7 +12,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name='torahcodes',
-    version='1.0.7',
+    version='1.0.10',
     author='torahcodes',
     author_email='',
     description='An understandable multilanguaje and multithreading bible codes . Study the Torah as never before Bible Codes python library . An understandable multilanguaje and multithreading bible codes . Study the Torah as never before',
