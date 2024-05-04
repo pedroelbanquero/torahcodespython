@@ -1,7 +1,7 @@
 from deep_translator import GoogleTranslator
 import torahcodes.resources.func.utils as util
 from hebrew_numbers import gematria_to_int
-from textblob import TextBlob
+#from textblob import TextBlob
 from os import listdir
 from os.path import isfile, join
 import re
@@ -54,16 +54,7 @@ class Torah():
 	def func_getnumber(self, listL, listW):
 		return util.fn_GetNumberValues(listL, listW)
 
-	def func_checklang(self, word, lang):
-		b = TextBlob(word)
-		
-		try:
-			b.detect_language()
-			if (b.detect_language() == lang):
-				return True
-		except:
-			return True
-		return False
+
 
 	def numtobook(self, number):
 		for x in books.booklist():
@@ -141,11 +132,8 @@ class Torah():
 		for word in str_split:
 			try:
 				if word[0].lower() in abd:
-					if active == 'true':
-						if self.func_checklang(word, lang) == True:
-							str_final = str_final+ word+' '
-					else:
-						str_final = str_final+ word+' '
+
+					str_final = str_final+ word+' '
 			except:
 				pass
 		
@@ -197,5 +185,4 @@ class Torah():
 		W = util.fn_TupleOfWordsAndGematriaValuesCreate(ListOfWords, NW)
 
 		return D
-
 
