@@ -44,13 +44,8 @@ setup(
         'configparser',
         'lxml',
         'python-hebrew-numbers',
-        'textblob',
         'deep_translator',
         'requests',
-        'pandas',
-        'xgboost',
-        'elasticsearch',
-        'python-telegram-bot',
     ],
     entry_points={
         'console_scripts': [
