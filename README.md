@@ -2,7 +2,7 @@
 
 Torah Codes , An understandable Equidistant Letter Sequence, multilanguaje and multithreading bible codes python library . Study the Torah as never before
 
-Use online on [Online version](https://huggingface.co/spaces/vnosri/Torah_Codes)
+Use online on [Online version](https://huggingface.co/spaces/vnosri/Torah_Codes) with Zephy AI chatbot model
 
 ![image](https://github.com/pedroelbanquero/torahcodespython/assets/60758685/d37b98c3-87d3-4cd2-b42e-d5d5dbc1309c)
 
