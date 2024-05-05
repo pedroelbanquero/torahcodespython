@@ -2,6 +2,11 @@
 
 Torah Codes , An understandable Equidistant Letter Sequence, multilanguaje and multithreading bible codes python library . Study the Torah as never before
 
+Use online on [Online version](https://huggingface.co/spaces/vnosri/Torah_Codes)
+
+![image](https://github.com/pedroelbanquero/torahcodespython/assets/60758685/d37b98c3-87d3-4cd2-b42e-d5d5dbc1309c)
+
+
 ![image](https://user-images.githubusercontent.com/60758685/143378238-d73ee93b-7ba6-4093-83ac-a859fa11461a.png)
 
 ![image](https://user-images.githubusercontent.com/60758685/213285427-4561bb21-4635-442b-9b44-affae791c47b.png)
@@ -126,6 +131,9 @@ n, n + d, n + 2d, ..., n + (k - 1)d
 
 WRR define n as the start, d as the skip between letters in the search-term, and k as the length of the ELS. These three parameters uniquely identify the ELS which is denoted (n, d, k).
 
+
+![image](https://github.com/pedroelbanquero/torahcodespython/assets/60758685/7bd3466e-247f-410e-b6ee-d4bce1157e10)
+
 ## Probability of sequence existence
 
 A way to ensure the faith in the method is directly linked to the probability of generate common sense sentences from the ELS algorithm, is not the same search words of 8 digits than 16 inside the same number of characters (each book)
@@ -142,58 +150,7 @@ Many uninitiated in kabala might think the results are gimmicks or casual . A ma
 
 - H(n*book_chars) == H(n*Random)
 
-## Holy Books Forecasting
 
-Artificial intelligence methods allow us to make more complex calculations over pre trained models, or extract the function informacion of a dataset to compose a function.
-
-By this way we can extend the ELS methods as a infinite data series . 
-
-### AI ELS methods
-
-- Extending books
-
-Pre train a model with a holy book, and generate alternative futures over the end .
-
-- Extending gematria datasets
-
-Converting words to gematria and extending to infinite as a sequence
-
-
-## XGboost pattern (XG-ELS, search for unprobable patterns based on linear regresions
-
-- Convert word to gematria sequence , extend sequence with xgboost prediction until user selection number of loops, sum sequence, search for ELS
-
-- Load book, extend him until user selection , search by ELS
-
-- Gematria regressor classificator and forecasting
-
-- Support for Missing Data
-
-![image](https://user-images.githubusercontent.com/60758685/143395534-9b688fbc-fc27-47a2-b268-fdbee609c09b.png)
-
-
-## Probnet deterministic geometric or arithmetic functions sequences
-
-- Convert word to gematria sequence , extend sequence with xgboost prediction until user selection number of loops, sum sequence, search for ELS
-
-- Load book, extend him until user selection , search by ELS
-
-- Gematria geometric classificator
-
-- Gematria arithmetic classificator
-
-![image](https://user-images.githubusercontent.com/60758685/143404139-bdec0a17-c552-4218-968b-a697aa8e9c4e.png)
-
-
-## Baphomet AI model
-
-- XGBOOST (Work on progress training models over linear regresion)
-
-  Pretained genesis and original repository books of Torah Bible Code
-
-  Allow to generate new book ends and order permutations .
-  
-  An artificial intelligence algorithm can priorize order combinations with the trained common sense of the "pre ordered Torah", reducing computation costs to find results .
 
 ## Torah encoding analisys
 
